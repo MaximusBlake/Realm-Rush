@@ -5,7 +5,6 @@ using UnityEngine;
 [SelectionBase]
 [RequireComponent(typeof(Waypoint))]
 public class CubeEditorSnap : MonoBehaviour {
-    
     Waypoint waypoint;
     private void Awake()
     {
@@ -14,6 +13,7 @@ public class CubeEditorSnap : MonoBehaviour {
     private void Update()
     {
         SnapToGrid();
+        UpdateLabel();
     }
 
     private void SnapToGrid()
