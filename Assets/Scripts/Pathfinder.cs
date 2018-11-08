@@ -6,6 +6,7 @@ using UnityEngine;
 public class Pathfinder : MonoBehaviour {
 
     Dictionary<Vector2Int, Waypoint> grid= new Dictionary<Vector2Int, Waypoint>();
+    Queue<Waypoint> theQueue = new Queue<Waypoint>();
 
     [SerializeField] Waypoint startWaypoint, endWaypoint;
 
@@ -17,11 +18,24 @@ public class Pathfinder : MonoBehaviour {
         Vector2Int.down
     };
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         LoadBlocks();
         ColorStartAndEnd();
-        ExploreNeighbors();
-	}
+        Pathfind();
+        //ExploreNeighbors();
+    }
+
+    private void Pathfind()
+    {
+        theQueue.Enqueue(startWaypoint);
+        while (theQueue.Count > 0)
+        {
+            var searchCenter= theQueue.Dequeue();
+            print("Searching from: "+ searchCenter); //todo remove log
+
+        }
+    }
 
     private void ExploreNeighbors()
     {
