@@ -350,6 +350,10 @@ Prefab:
       propertyPath: path.Array.data[9]
       value: 
       objectReference: {fileID: 1986795715}
+    - target: {fileID: 1373714115325862, guid: 699dea4665821c74e9e1e25f76ba05d2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 699dea4665821c74e9e1e25f76ba05d2, type: 2}
   m_IsPrefabAsset: 0
@@ -630,7 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWaypoint: {fileID: 1466082096}
-  endWaypoint: {fileID: 1986795715}
+  endWaypoint: {fileID: 124078996}
 --- !u!114 &1018435484 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114504153286542952, guid: c3e0bb7d5e8da5a449e9597a28ab9010,
