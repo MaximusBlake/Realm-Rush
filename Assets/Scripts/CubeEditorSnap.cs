@@ -20,18 +20,17 @@ public class CubeEditorSnap : MonoBehaviour {
     {
         int gridSize = waypoint.GetGridSize();
         transform.position = new Vector3(
-            waypoint.GetGridPos().x, //x
+            waypoint.GetGridPos().x *gridSize, //x
             0f,//y
-            waypoint.GetGridPos().y);//z
+            waypoint.GetGridPos().y*gridSize);//z
     }
     private void UpdateLabel()
     {
-        int gridSize = waypoint.GetGridSize();
         TextMesh mesh = GetComponentInChildren<TextMesh>();
         string labelText = 
-            waypoint.GetGridPos().x / gridSize + 
+            waypoint.GetGridPos().x + 
             "," + 
-            waypoint.GetGridPos().y / gridSize;
+            waypoint.GetGridPos().y;
         mesh.text = labelText;
         gameObject.name = labelText;
     }

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
-
-    [SerializeField] List<Waypoint> path;
-	void Start () {
+    public List<Waypoint> path = new List<Waypoint>(); //delete
+    void Start () {
         StartCoroutine(FollowPath());
     }
     IEnumerator FollowPath()
