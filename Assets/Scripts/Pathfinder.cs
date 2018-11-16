@@ -12,7 +12,7 @@ public class Pathfinder : MonoBehaviour {
 
     Waypoint searchCenter;
 
-    public List<Waypoint> path= new List<Waypoint>(); //make private
+    List<Waypoint> path= new List<Waypoint>(); //make private
 
     Vector2Int[] directions =
     {
@@ -22,12 +22,13 @@ public class Pathfinder : MonoBehaviour {
         Vector2Int.down
     };
     
-    void Start ()
+    public List<Waypoint> GetPath()
     {
         LoadBlocks();
         ColorStartAndEnd();
         BreadthFirstSearch();
         CreatePath();
+        return path;
     }
 
     private void CreatePath()
@@ -73,13 +74,9 @@ public class Pathfinder : MonoBehaviour {
         {
             Vector2Int neighborCoordinates = searchCenter.GetGridPos() + direction;
             
-            try
+            if(grid.ContainsKey(neighborCoordinates))
             {
                 QueueNewNeighbors(neighborCoordinates);
-            }
-            catch
-            {
-                //do nothing
             }
         }
     }
