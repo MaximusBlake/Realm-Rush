@@ -6,13 +6,10 @@ public class Waypoint : MonoBehaviour {
 
     public bool isExplored = false; // public ok cause data class
     public Waypoint exploredFrom;
+    public bool isPlacable= true;
 
     Vector2Int gridPos;
     const int gridSize = 10;
-    private void Update()
-    {
-        
-    }
 
     public Vector2Int GetGridPos()
     {
@@ -25,5 +22,21 @@ public class Waypoint : MonoBehaviour {
     public int GetGridSize()
     {
         return gridSize;
+    }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (isPlacable)
+            {
+                print("Placed Tower");
+            }
+            else
+            {
+                print("Can't Place Tower Here");
+            }
+            
+        }
     }
 }

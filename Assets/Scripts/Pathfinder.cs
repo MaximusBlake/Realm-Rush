@@ -24,24 +24,37 @@ public class Pathfinder : MonoBehaviour {
     
     public List<Waypoint> GetPath()
     {
+        if (path.Count== 0)
+        {
+            CalculatePath();
+        }
+        return path;
+    }
+
+    private void CalculatePath()
+    {
         LoadBlocks();
         BreadthFirstSearch();
         CreatePath();
-        return path;
     }
 
     private void CreatePath()
     {
-        path.Add(endWaypoint);
+        SetAsWaypoint(endWaypoint);
         Waypoint previous = endWaypoint.exploredFrom;
         while (previous!= startWaypoint)
         {
-            //add intermediate waypoints
-            path.Add(previous);
+            SetAsWaypoint(previous);
             previous = previous.exploredFrom;
         }
-        path.Add(startWaypoint);
+        SetAsWaypoint(startWaypoint);
         path.Reverse();
+    }
+
+    private void SetAsWaypoint(Waypoint wp)
+    {
+        path.Add(wp);
+        wp.isPlacable = false;
     }
 
     private void BreadthFirstSearch()

@@ -14,7 +14,6 @@ public class EnemyCollision : MonoBehaviour {
         else
         {
             hitpoints--;
-            print(hitpoints);
         }
 
     }
