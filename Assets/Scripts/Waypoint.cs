@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
+    [SerializeField] Tower towerPrefab;
 
-    public bool isExplored = false; // public ok cause data class
+    public bool isExplored = false; // public ok cause it's data class
     public Waypoint exploredFrom;
     public bool isPlacable= true;
 
@@ -30,7 +31,9 @@ public class Waypoint : MonoBehaviour {
         {
             if (isPlacable)
             {
-                print("Placed Tower");
+                Vector3 towerPos = new Vector3(transform.position.x, transform.position.y+10, transform.position.z );
+                Instantiate(towerPrefab, towerPos, Quaternion.identity);
+                isPlacable = false;
             }
             else
             {

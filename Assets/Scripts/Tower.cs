@@ -15,6 +15,8 @@ public class Tower : MonoBehaviour {
         if (targetEnemy)
         {
             objectToPan.LookAt(targetEnemy);
+            objectToPan.transform.Rotate(-30, 0, 0);
+
             FireAtEnemy();
         }
         else
