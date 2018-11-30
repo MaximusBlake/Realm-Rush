@@ -28,10 +28,14 @@ public class EnemyCollision : MonoBehaviour {
 
     private void KillEnemy()
     {
-        //deathSound.Play();
+        //play a sound when enemy dies
         Vector3 deathPos= new Vector3(transform.position.x, transform.position.y +20, transform.position.z);
         var death = Instantiate(deathParticle, deathPos, Quaternion.identity);
+
         death.Play();
+        float destroyDelay= death.main.duration;
+        Destroy(death.gameObject, destroyDelay);
+
         Destroy(gameObject);
     }
 }

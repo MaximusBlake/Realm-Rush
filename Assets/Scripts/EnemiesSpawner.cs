@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemiesSpawner : MonoBehaviour {
-    [Range(0.5f,60f)] [SerializeField] float secondsBetweenSpawns= 2f;
+    [Range(0.1f,60f)] [SerializeField] float secondsBetweenSpawns= .5f;
     [SerializeField] EnemyCollision enemyPrefab;
+    [SerializeField] Transform parent;
 	
 	void Start () {
         StartCoroutine(RepeatedSpawnEnemies());
@@ -13,7 +14,8 @@ public class EnemiesSpawner : MonoBehaviour {
     {
         while (true)//forever
         {
-            Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+            var newEnemy= Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+            newEnemy.transform.parent = parent;
             yield return new WaitForSeconds(secondsBetweenSpawns);
         }
     }
