@@ -280,7 +280,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 5
   collisonMesh: {fileID: 65433604644817872}
-  hitParticle: {fileID: 198168339340223612}
+  hitParticle: {fileID: 198801791596541968, guid: dcf9cd10c07cf0c49863969befadb243,
+    type: 2}
   deathParticle: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0,
     type: 2}
 --- !u!114 &114926925979535456
