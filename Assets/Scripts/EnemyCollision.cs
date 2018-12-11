@@ -4,11 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour {
-    [SerializeField] int hitpoints = 5;
+    [SerializeField] int hitpoints = 15;
+
     [SerializeField] Collider collisonMesh;
+
     [SerializeField] ParticleSystem hitParticle;
     [SerializeField] ParticleSystem deathParticle;
 
+    [SerializeField] AudioClip hitSFX;
+    [SerializeField] AudioClip deathSFX;
+
+    AudioSource myAudioSource;
+
+    private void Start()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+    }
     private void OnParticleCollision(GameObject other)
     {
         ProcessHit();
@@ -20,22 +31,26 @@ public class EnemyCollision : MonoBehaviour {
 
     }
 
-    private void ProcessHit()
+    void ProcessHit()
     {
         hitpoints--;
         hitParticle.Play();
+        myAudioSource.PlayOneShot(hitSFX);
     }
 
     private void KillEnemy()
     {
-        //play a sound when enemy dies
         Vector3 deathPos= new Vector3(transform.position.x, transform.position.y +20, transform.position.z);
-        var death = Instantiate(deathParticle, deathPos, Quaternion.identity);
+        var deathParticles = Instantiate(deathParticle, deathPos, Quaternion.identity);
 
-        death.Play();
-        float destroyDelay= death.main.duration;
-        Destroy(death.gameObject, destroyDelay);
+        deathParticles.Play();
+        
+        float destroyDelay= deathParticles.main.duration;
+        Destroy(deathParticles.gameObject, destroyDelay);
+        
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position);
 
         Destroy(gameObject);
+        print("Not Destroyed");
     }
 }

@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemiesSpawner : MonoBehaviour {
     [Range(0.1f,60f)] [SerializeField] float secondsBetweenSpawns= .5f;
     [SerializeField] EnemyCollision enemyPrefab;
     [SerializeField] Transform parent;
     [SerializeField] int enemiesSpawned=0;
-    [SerializeField] Text enemiesText;
+    [SerializeField] Text enemiesSpawnedText;
 
+    [SerializeField] AudioClip spawnSFX;
+    
     void Start () {
         StartCoroutine(RepeatedSpawnEnemies());
-        enemiesText.text = enemiesSpawned.ToString();
+        enemiesSpawnedText.text = enemiesSpawned.ToString();
 	}
     IEnumerator RepeatedSpawnEnemies()
     {
-        while (true)//forever
+        while (enemiesSpawned<=50)//forever
         {
             var newEnemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
             newEnemy.transform.parent = parent;
             EnemySpawned();
+            GetComponent<AudioSource>().PlayOneShot(spawnSFX);
             yield return new WaitForSeconds(secondsBetweenSpawns);
         }
     }
@@ -28,6 +32,6 @@ public class EnemiesSpawner : MonoBehaviour {
     private void EnemySpawned()
     {
         enemiesSpawned++;
-        enemiesText.text = enemiesSpawned.ToString();
+        enemiesSpawnedText.text = enemiesSpawned.ToString();
     }
 }
