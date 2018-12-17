@@ -17,6 +17,13 @@ public class EnemiesSpawner : MonoBehaviour {
         StartCoroutine(RepeatedSpawnEnemies());
         enemiesSpawnedText.text = enemiesSpawned.ToString();
 	}
+    private void Update()
+    {
+        if (enemiesSpawned >= 50)
+        {
+            SceneManager.LoadScene(2);
+        }
+    }
     IEnumerator RepeatedSpawnEnemies()
     {
         while (enemiesSpawned<=50)//forever

@@ -393,8 +393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a693496e119c59479a908f259715e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementperiod: 0.5
-  deathParticle: {fileID: 198697544922024066, guid: bdbef3f00917aff49a590cb8c2df2447,
+  movementperiod: 0.4
+  deathParticle: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0,
     type: 2}
 --- !u!198 &198168339340223612
 ParticleSystem:

@@ -5,15 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
     [SerializeField] float waitToChange= 2f;
+    [SerializeField] int sceneToChangeTo = 0;
     // Use this for initialization
     void Start()
     {
-        Invoke("LoadFirstScene", waitToChange);
+        Invoke("LoadScene", waitToChange);
     }
 
     // Update is called once per frame
-    void LoadFirstScene()
+    void LoadScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneToChangeTo);
     }
 }

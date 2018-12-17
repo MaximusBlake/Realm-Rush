@@ -377,6 +377,11 @@ Prefab:
       propertyPath: waitToChange
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114079817967420894, guid: 71419a495e479bf46b9153da9fd1687f,
+        type: 2}
+      propertyPath: sceneToChangeTo
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71419a495e479bf46b9153da9fd1687f, type: 2}
   m_IsPrefabAsset: 0

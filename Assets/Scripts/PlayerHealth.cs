@@ -11,9 +11,18 @@ public class PlayerHealth : MonoBehaviour {
 
     [SerializeField] AudioClip losingHealthSFX;
 
+
     private void Start()
     {
         healthText.text = health.ToString();
+    }
+
+    private void Update()
+    {
+        if (health <= 0)
+        {
+            SceneManager.LoadScene(3);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,9 +30,5 @@ public class PlayerHealth : MonoBehaviour {
         health-=healthDecrease;
         healthText.text = health.ToString();
         GetComponent<AudioSource>().PlayOneShot(losingHealthSFX);
-        if (health<= 0)
-        {
-            SceneManager.LoadScene(4);
-        }
     }
 }
