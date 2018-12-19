@@ -8,10 +8,17 @@ public class Tower : MonoBehaviour {
     [SerializeField] Transform objectToPan;
     [SerializeField] ParticleSystem bulletParticles;
     [SerializeField] float attackRange =30;
+    [SerializeField] float timeUntilDestroyed= 15;
 
     public Waypoint baseWp;//block tower is on
     //State
     Transform targetEnemy;
+
+    private void Start()
+    {
+        Invoke("DestroyTower", timeUntilDestroyed);
+    }
+
     void Update () {
         SetTargetEnemy();
         if (targetEnemy)
@@ -71,5 +78,12 @@ public class Tower : MonoBehaviour {
     {
         var emissionModule = bulletParticles.emission;
         emissionModule.enabled = shootOn;
+    }
+
+    void DestroyTower()
+    {
+        var factory = FindObjectOfType<TowerFactory>();
+        factory.DestroyT(this);
+        Destroy(gameObject);
     }
 }

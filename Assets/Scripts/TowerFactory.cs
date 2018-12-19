@@ -10,11 +10,13 @@ public class TowerFactory : MonoBehaviour
     
     Queue<Tower> towerQueue = new Queue<Tower>();
 
+    int currentTowerNum = 0;
+
     public void AddTower(Waypoint baseWp)
     {
-        int currentTowerNum = towerQueue.Count;
-        if (currentTowerNum < towerLimit)
+        if (currentTowerNum <= towerLimit)
         {
+            currentTowerNum++;
             InstaniateNewTower(baseWp);
         }
         else
@@ -49,5 +51,11 @@ public class TowerFactory : MonoBehaviour
         baseWp.isPlacable = false;
 
         towerQueue.Enqueue(newTower);
+    }
+
+    public void DestroyT(Tower tower)
+    {
+        tower= towerQueue.Dequeue();
+        currentTowerNum--;
     }
 }
